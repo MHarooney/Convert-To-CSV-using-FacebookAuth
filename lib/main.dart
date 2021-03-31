@@ -1,4 +1,4 @@
-`import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as JSON;
@@ -54,18 +54,8 @@ class _MyAppState extends State<MyApp> {
       _isLoggedIn = false;
     });
   }
-  
-//   List<List<dynamic>> csvData= [
-//     ["ID","username","email"],
-//     [123,"user 1","user1@email.com"]
-//   ];
-//
-//   Future<File> csvFile = CsvController.getCsvFromList(csvData);
-//   if(csvFile != null){
-//   print("File created here :"+csvFile.path);
-//   }else{
-//   print("file not created");
-//   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +87,13 @@ class _MyAppState extends State<MyApp> {
                 OutlinedButton(
                   child: Text("Export CSV"),
                   onPressed: () {
+                    var userCsvData = CsvController.getCsvListFromUserProfileMap(userProfile);
+                    var csvFile = CsvController.getCsvFromList(userCsvData);
+                    if(csvFile != null){
+                      print("File created here :"+csvFile.path);
+                    }else{
+                      print("file not created");
+                    }
                   },
                 ),
               ],
@@ -113,4 +110,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-`
