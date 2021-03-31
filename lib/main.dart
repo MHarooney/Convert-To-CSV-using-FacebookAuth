@@ -21,7 +21,6 @@ class _MyAppState extends State<MyApp> {
   Map userProfile;
   final facebookLogin = FacebookLogin();
 
-
   _loginWithFB() async {
     final result = await facebookLogin.logIn(['email']);
 
@@ -38,7 +37,6 @@ class _MyAppState extends State<MyApp> {
           _isLoggedIn = true;
         });
         break;
-
       case FacebookLoginStatus.cancelledByUser:
         setState(() => _isLoggedIn = false);
         break;
@@ -54,9 +52,7 @@ class _MyAppState extends State<MyApp> {
       _isLoggedIn = false;
     });
   }
-
-
-
+  
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
