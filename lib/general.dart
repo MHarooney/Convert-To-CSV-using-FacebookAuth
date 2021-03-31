@@ -11,5 +11,5 @@ static  getDate(){
 
     finalDate = formattedDate.toString() ;
 
-}
+  }
 }
