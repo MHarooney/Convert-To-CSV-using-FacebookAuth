@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as JSON;
-import 'dart:io';
+import 'dart:io' as Io;
 
 import 'package:simpleappauth/csv_controller.dart';
 
@@ -86,9 +86,10 @@ class _MyAppState extends State<MyApp> {
                 ),
                 OutlinedButton(
                   child: Text("Export CSV"),
-                  onPressed: () {
+                  onPressed: () async {
                     var userCsvData = CsvController.getCsvListFromUserProfileMap(userProfile);
-                    var csvFile = CsvController.getCsvFromList(userCsvData);
+
+                    var csvFile = await CsvController.getCsvFromList(userCsvData);
                     if(csvFile != null){
                       print("File created here :"+csvFile.path);
                     }else{
